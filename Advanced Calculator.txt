@@ -1,0 +1,40 @@
+def advanced_calculator():
+    """
+    This function runs a command-line calculator that can handle
+    basic arithmetic, input errors, and division by zero.
+    """
+    while True:
+        try:
+            num1 = float(input("Enter the first number: "))
+            while True:
+                opr = input("Enter an operator (+, -, *, /): ")
+                if opr in ['+', '-', '*', '/']:
+                    break
+                else:
+                    print("Invalid operator. Please try again.")
+            num2 = float(input("Enter the second number: "))
+            if opr == '+':
+                result = num1 + num2
+            elif opr == '-':
+                result = num1 - num2
+            elif opr == '*':
+                result = num1 * num2
+            elif opr == '/':
+                if num2 == 0:
+                    print("Error: Cannot divide by zero.")
+                    continue 
+                result = num1 / num2
+            print(f"The result is: {result}")
+        except ValueError:
+            print("Invalid number. Please enter numeric values only.")
+            continue
+        while True:
+            repeat = input("Calculate again? (yes/no): ").lower()
+            if repeat in ["yes", "no"]:
+                break
+            else:
+                print("Invalid input. Please answer with 'yes' or 'no'.")
+        if repeat == "no":
+            print("Thank you for using the calculator. Goodbye! ")
+            break
+advanced_calculator()
